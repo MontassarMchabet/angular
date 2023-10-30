@@ -1,0 +1,45 @@
+<h2>Add new user</h2>
+<form #addForm="ngForm" (ngSubmit)="add(addForm)">
+    <div class="form-group">
+        <label for="fn" >firstName</label>
+        <input type="text" class="form-control" id="fn" name="fn" ngModel required minlength="3" pattern="[a-zA-Z]" #fn="ngModel">
+        <small class="text text-bg-danger" *ngIf="fn?.invalid && ln.touched ">name required</small>
+        <small class="text text-danger" *ngIf="fn?.errors?.['minlength']&& fn.touched ">min length est 3</small>
+        <small class="text text-danger" *ngIf="fn?.errors?.['pattern'] && fn.touched">doit etre des caractère </small>
+    </div>
+    <div class="form-group">
+        <label for="ln" >lastName</label>
+        <input type="text" class="form-control" id="ln" name="ln" ngModel required minlength="3" pattern="[a-zA-Z]"  #ln="ngModel">
+        <small class="text text-bg-danger" *ngIf="ln?.invalid && ln.touched ">Last Name is required</small>
+        <small class="text text-danger" *ngIf="ln?.errors?.['minlength'] && ln.touched ">min length est 3</small>
+        <small class="text text-danger" *ngIf="ln?.errors?.['pattern'] && ln.touched">doit etre des caractère </small>
+    </div>
+    <div class="form-group">
+        <label for="birthdate">Birth date</label>
+        <input type="text" class="form-control" id="birthdate" placeholder="Enter Birth date" name="birthdate" ngModel required #birthdate="ngModel">
+        <small class="text text-danger" *ngIf="birthdate?.errors?.['required'] && birthdate.touched">Date is required</small>
+    </div>
+    <div class="form-group">
+        <label for="email" >Email</label>
+        <input type="text" class="form-control" id="email" name="email" ngModel required pattern="^[a-zA-Z0-9._-]+@gmail.com" #email="ngModel">
+        <small class="text text-bg-danger" *ngIf="email?.invalid && fn.touched">name required</small>
+        <small class="text text-danger" *ngIf="email?.errors?.['pattern'] && email.touched">Must be a valid Gmail address</small>
+    </div>
+    <div class="form-group">
+        <label for="Password" >Password</label>
+        <input type="text" class="form-control" id="Password" name="Password" ngModel required pattern="^[a-zA-Z0-9]{8,}" #Password="ngModel">
+        <small class="text text-bg-danger" *ngIf="Password?.invalid && fn.touched">name required</small>
+        <small class="text text-danger" *ngIf="Password?.errors?.['pattern'] && Password.touched">Must contain at least 8 characters with letters and numbers</small>
+    </div>
+    <div class="form-group">
+        <label for="Profession" >Profession</label>
+        <input type="text" class="form-control" id="Profession" name="Profession" ngModel required #Profession="ngModel">
+        <small class="text text-bg-danger" *ngIf="Profession?.invalid && Profession.touched">Profession required</small>
+    </div>
+    <div class="form-group">
+        <label for="category" >Customer category</label>
+        <input type="text" class="form-control" id="category" name="category" ngModel required #category="ngModel">
+        <small class="text text-bg-danger" *ngIf="category?.invalid && category.touched">category required</small>
+    </div>
+    <button class="btn btn-primary" [disabled]="addForm.invalid">submit</button>
+</form>

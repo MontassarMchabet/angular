@@ -1,0 +1,23 @@
+<tbody >
+    
+    <div *ngIf="status === 'true'">
+       
+        <div  *ngFor="let item of invoices" >
+             <div *ngIf="item.idFacture === id ">
+                <p>idFacture: {{item.idFacture}} </p>
+                <p>montantFacture:{{item.montantFacture}} </p>
+                <p>montantRemise:{{item.montantRemise}} </p>
+                <p>dateFacture:{{item.dateFacture}} </p>
+                <p>active: {{item.active}} </p>
+
+             </div>
+                   
+        </div> 
+    </div>
+    <div *ngIf="status  === 'false'">
+        <p>Impossible de visualiser les détails
+            de la facture</p>
+            
+    </div>
+    <button class="btn btn-primary hBack" type="button" [routerLink]="['/mainInvoice']">Retour</button>
+</tbody>
